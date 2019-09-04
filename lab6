@@ -1,0 +1,112 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.applet.AudioClip;
+public class Lab6 extends Lab4 implements ActionListener,ItemListener
+/***************************************************************/ 
+/*   Program Name:     Lab 6                                 */ 
+/*                                                             */ 
+/*   Student Name:     Kai Qin                                 */ 
+/*   Semester:         Fall 2017                               */ 
+/*   Class-Section:    CoSc10403-055                           */ 
+/*   Instructor:       Dr.Comer                                */ 
+/*                                                             */ 
+/*   Program Overview:                                         */ 
+/* This program separates to the view, model and control  */
+/*   Input:                                                    */ 
+/*    try catch, audioclip, actionlisteners, */
+/* if-else statement,some calculations        */
+/*       under size of double and everything from Lab4    
+*/  
+/*   Output:                                                   */ 
+/*     The popupframe and the audioclip                        */ 
+/*                                                             */ 
+/*   Program Limitations:                                      */ 
+/*     it can only selescted a few cities as options           */ 
+/*                                                             */ 
+/*   Significant Program Variables: */
+/*     Image: Aircraft.gif                                     */ 
+/*     JLabels:flights, company name, departing, destination...*/ 
+/*     JComboBox: depart cities, arrive cities                 */
+/*     JButton: Submit, Cancel, Reset                          */
+/*     JRadioButton: Round trip, one-way                       */
+/*     JTextfield: month, day, year, time, firstname, lastname */
+/*     JTextArea: Special instructions                         */
+/*     JCheckBox: Music, Sound                                 */
+/*     JPanel(FlowLayout):East West and North sides            */
+/*     Jpanel(GridLayout):Center    */
+/*     JPanel(BorderLayout):Whole page */
+/*    String:getting informations and output on frame
+*/
+/* try catch: to report the erro.
+*/
+/* AudioClipt: when the option is selected, */
+/* play the music and sounds
+    */
+/*     popUpFrame                                              */
+/***************************************************************/  
+
+{   double x=0.0,y,z;
+double totalcost,cost;
+    String fcity,tcity,times,extra,departure,dest,fns,lns;
+    Lab6Model m = new Lab6Model(this);
+    int days,months,years,numPass,nums;
+
+public void init()
+{ 
+super.init();
+addListeners();
+popUpFrame.setVisible(false);
+popUpFrame2.setVisible(false);}
+    public void addListeners()
+    {
+    submit.addActionListener(this);
+    music.addItemListener(this);
+    round.addItemListener(this);
+    single.addItemListener(this);
+    review.addActionListener(this);
+    buy.addActionListener(this);
+   
+    //other JButtons
+    //oneWayRB.additemListener(this);
+    //roundTripRB.addItemListener(this);
+    //playBackgroundCB.addItemListener(this);
+    cancel.addActionListener(this);
+    reset.addActionListener(this);
+    departingb.addActionListener(this);
+    destinationb.addActionListener(this);
+    time.addActionListener(this);
+    }
+
+    public void itemStateChanged(ItemEvent e)
+
+    {
+    if(e.getSource() == music)
+    m.performmusic();
+    if(e.getSource() == round)
+        m.performroundsingle();
+    else if(e.getSource() == single)
+    m.performroundsingle();
+}      
+ 
+public void actionPerformed(ActionEvent e)
+{
+if(e.getSource()== submit)
+m.performsubmit();
+else if (e.getSource() == reset)
+m.performreset();
+else if (e.getSource() == cancel)
+m.performcancel();
+if(e.getSource() == review)
+m.performreveiw();
+else if(e.getSource() == buy)
+m.performbuy();
+}
+}
+
+
+
+
+
+
+
