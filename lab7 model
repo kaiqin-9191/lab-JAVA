@@ -1,0 +1,90 @@
+import javax.swing.*;
+import java.util.Comparator;
+import java.util.Arrays;
+
+@SuppressWarnings("unchecked")
+public class Lab7Model extends Lab6Model {
+    public TicketSales[] tickets = new TicketSales[20];//maximum 20 tickets
+    private TicketSales temp = null;
+    private int len = 0;
+    private Lab7 v;
+
+    public Lab7Model(Lab7 fromc) {
+        super(fromc);
+        v = fromc;
+    }
+
+    @Override
+    public void performsubmit() {
+        super.performsubmit();
+    }
+
+    @Override
+    public void performbuy() {
+        super.performbuy();
+        temp = new TicketSales(
+                v.fns + " " + v.lns,
+                v.dest,
+                "Leaving on date" + v.times,
+                v.nums,
+                v.totalcost);
+        v.storeInfo.setEnabled(true);
+    }
+
+    void handleStore() {
+        if (len == 20||temp==null) {
+            return;
+        }
+        tickets[len] = temp;
+        v.data.addElement(temp.getTicketString());
+        len++;
+        temp = null;
+        v.detailFrame.setVisible(true);
+        v.storeInfo.setEnabled(false);
+    }
+
+    void handleClear() {
+        tickets = new TicketSales[20];
+        len = 0;
+        v.data.removeAllElements();
+    }
+
+    void handleSort() {
+        Arrays.sort(tickets, 0,len,new Comparor());
+        v.data.removeAllElements();
+        for(int i = 0; i<len;i++){
+            v.data.addElement(tickets[i].getTicketString());
+        }
+    }
+    void handleClose(){
+        v.detailFrame.setVisible(false);
+        handleClear();
+    }
+    void handleMore(){
+        performreset();
+        v.detailFrame.setVisible(false);
+    }
+
+    DefaultListModel<String> getListModel(){
+        DefaultListModel<String> ret = new DefaultListModel<String>();
+        for(int i = 0; i < len; i++){
+            ret.addElement(tickets[i].getTicketString());
+        }
+        return ret;
+    }
+
+
+}
+
+class Comparor implements Comparator<TicketSales> {
+    @Override
+    public int compare(TicketSales o1, TicketSales o2) {
+        if (o1.getCost() > o2.getCost()) {
+            return 1;
+        } else if (o1.getCost() == o2.getCost()) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+}
