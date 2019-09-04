@@ -1,0 +1,91 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+
+@SuppressWarnings("unchecked")
+public class Lab7 extends Lab6 {
+    public JFrame detailFrame;
+    JButton clear, more, sort, close;
+    JPanel p1, p2, p3, p4, p5;
+    DefaultListModel<String> data;
+    JList tickets;
+    JScrollPane scroll;
+    //detail view
+    JButton storeInfo;
+    Lab7Model m = new Lab7Model(this);
+
+    public void init() {
+        super.init();
+        addStoreInfo();
+        initDetailView();
+    }
+
+    public void initDetailView() {
+        detailFrame = new JFrame("Tickets Purchased");
+        detailFrame.setVisible(false);
+        detailFrame.setSize(800, 300);
+        detailFrame.setLayout(new FlowLayout());
+        detailFrame.getContentPane().setBackground(PURPLE);
+        p1 = new JPanel(new BorderLayout());
+        p2 = new JPanel(new FlowLayout());
+        p3 = new JPanel(new FlowLayout());
+        p1.setOpaque(false);
+        p1.setBackground(PURPLE);
+        p2.setBackground(PURPLE);
+        p3.setBackground(PURPLE);
+        detailFrame.add(p1);
+        clear = new JButton("Clear Stats");
+        more = new JButton("More Tickets");
+        sort = new JButton("Sort by Cost");
+        close = new JButton("Close Frame");
+        initList();
+//        scroll = new JScrollPane(tickets, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        p1.add(tickets, BorderLayout.CENTER);
+        p1.add(p2, BorderLayout.SOUTH);
+        p1.add(p3, BorderLayout.NORTH);
+        addButton();
+    }
+
+    private void initList() {
+        data = m.getListModel();
+        tickets = new JList(data);
+    }
+
+
+    public void addStoreInfo() {
+        storeInfo = new JButton("STORE_INFO");
+        storeInfo.addActionListener(this);
+        super.fp2n.add(storeInfo);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == storeInfo) {
+            this.m.handleStore();
+        } else if (e.getSource() == close) {
+            this.m.handleClose();
+        } else if (e.getSource() == buy) {
+            m.performbuy();
+        } else if (e.getSource() == more) {
+            m.handleMore();
+        } else if (e.getSource() == clear) {
+            m.handleClear();
+        } else if (e.getSource() == sort) {
+            m.handleSort();
+        } else {
+            super.actionPerformed(e);
+        }
+    }
+
+    private void addButton() {
+        close.addActionListener(this);
+        more.addActionListener(this);
+        sort.addActionListener(this);
+        clear.addActionListener(this);
+        p3.add(clear);
+        p3.add(more);
+        p2.add(sort);
+        p2.add(close);
+    }
+}
+// <applet code=Lab7 width=100 height=200></applet>
