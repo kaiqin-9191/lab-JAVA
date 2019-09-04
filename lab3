@@ -1,0 +1,163 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.*;
+public class Lab3 extends JApplet
+/***************************************************************/ 
+/*   Program Name:     Lab 3                                  */ 
+/*                                                             */ 
+/*   Student Name:     Kai Qin                                 */ 
+/*   Semester:         Fall 2017                               */ 
+/*   Class-Section:    CoSc10403-055                           */ 
+/*   Instructor:       Dr.Comer                                */ 
+/*                                                             */ 
+/*   Program Overview:                                         */ 
+/* 	 	This program is to build a online side where allows    */ 
+/*      customers to specifies their date and time to depart   */ 
+/*      and other details.                                     */ 
+/*   Input:                                                    */ 
+/*     type in different text field and text area and select   */ 
+/*     different options in different boxes.                   */ 
+/*   Output:                                                   */ 
+/*     None                                                    */ 
+/*                                                             */ 
+/*   Program Limitations:                                      */ 
+/*     There are no actual results after hit submit button.    */ 
+/*                                                             */ 
+/*   Significant Program Variables:                            */ 
+/*     Image: Aircraft.gif                                     */ 
+/*     JLabels:flights, company name, departing, destination...*/ 
+/*     JComboBox: depart cities, arrive cities                 */
+/*     JButton: Submit, Cancel, Reset                          */
+/*     JRadioButton: Round trip, one-way                       */
+/*     JTextfield: month, day, year, time, firstname, lastname */
+/*     JTextArea: Special instructions                         */
+/*     JCheckBox: Music, Sound                                 */
+/***************************************************************/  
+{ 
+	JLabel aircraft;
+	ImageIcon ic;
+	Image Aircraft;
+	
+	JLabel company = new JLabel("Schnell Tickets");
+	Font f1 = new Font("Sans Serief", Font.BOLD, 35);
+	
+	
+	JLabel departing = new JLabel("Departing From");
+	JComboBox departingb = new JComboBox();
+	
+	JLabel destination = new JLabel("Destination");
+	JComboBox destinationb = new JComboBox();
+	
+	JLabel DepartDate = new JLabel("Departing Date");
+	JTextField month = new JTextField("Month",5);
+	JTextField day = new JTextField("day",3);
+	JTextField year = new JTextField("year",4);
+	JComboBox time = new JComboBox();
+	
+	JLabel ReturnDate = new JLabel("Return Date");
+	JTextField month2 = new JTextField("month",5);
+	JTextField day2 = new JTextField("day",3);
+	JTextField year2 = new JTextField("year",4);
+	JComboBox time2 = new JComboBox();
+	
+	JRadioButton round = new JRadioButton("Round Trip");
+	JRadioButton single = new JRadioButton("One-Way");
+	
+	JLabel passenger = new JLabel("Number Of Passengers");
+	JTextField passengern = new JTextField (3);
+	
+	JTextField first = new JTextField("First Name",20);
+	JTextField last = new JTextField("Last Name",20);
+	
+	JCheckBox music = new JCheckBox("Music");
+	JCheckBox sound = new JCheckBox("Sound");
+	
+	JButton submit = new JButton("Submit");
+	JButton cancel = new JButton("Cancel");
+	JButton reset = new JButton("Reset");
+	
+	JTextArea si = new JTextArea("Special Instructions:",6,45);
+	
+	
+	public void init()
+	{
+		setSize(650,650);
+		setLayout(new FlowLayout());
+		
+		
+		Aircraft = getImage(getCodeBase(),"Lab3Images/Aircraft.gif");
+		ic = new ImageIcon(Aircraft); 
+		aircraft = new JLabel(ic); 
+		
+		
+	    add(aircraft);
+	    
+	    add(company);
+	    company.setFont(f1);
+	    company.setForeground(Color.BLUE);
+	    
+	    add(departing);
+	    add(departingb);
+	    departingb.addItem("select city");
+	    departingb.addItem("Dallas");
+	    departingb.addItem("New York");
+	    departingb.addItem("Chicago");
+	    departingb.addItem("San Francisco");
+	    departingb.addItem("Washinton DC");
+	    departingb.addItem("Seattle");
+	    
+	    
+	    add(destination);
+	    add(destinationb);
+	    destinationb.addItem("select city");
+	    destinationb.addItem("Dallas");
+	    destinationb.addItem("New York");
+	    destinationb.addItem("Chicago");
+	    destinationb.addItem("San Francisco");
+	    destinationb.addItem("Washinton DC");
+	    destinationb.addItem("Seattle");
+	    
+	    add(DepartDate);
+	    add(month);
+	    add(day);
+	    add(year);
+	    add(time);
+	    time.addItem("Morning");
+	    time.addItem("Afternoon");
+	    time.addItem("Evening");
+	    time.addItem("Night");
+	    
+	    add(ReturnDate);
+	    add(month2);
+	    add(day2);
+	    add(year2);
+	    add(time2);
+	    time2.addItem("Morning");
+	    time2.addItem("Afternoon");
+	    time2.addItem("Evening");
+	    time2.addItem("Night");
+	    
+	    add(round);
+	    add(single);
+	    
+	    add(passenger);
+	    add(passengern);
+	    
+	    add(first);
+	    add(last);
+	    
+	    add(music);
+	    add(sound);
+	    
+	    add(submit);
+	    submit.setForeground(Color.GREEN);
+	    add(cancel);
+	    cancel.setForeground(Color.RED);
+	    add(reset);
+	    reset.setForeground(Color.BLUE);
+	    
+	    add(si);	
+	    si.setForeground(Color.BLUE);
+	}
+
+}
