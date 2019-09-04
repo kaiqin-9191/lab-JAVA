@@ -1,0 +1,255 @@
+import javax.swing.JTextField;
+
+public class Lab6Model 
+{
+		Lab6 c;
+	public Lab6Model(Lab6 fromc)
+		{c = fromc;}
+	
+	
+	 public void performbuy()
+	    {
+	    c.popUpFrame.setVisible(false);
+	    	c.popUpFrame2.setVisible(true);
+	    	c.detailn.setText(c.fns+"  "+c.lns+"\n"+"Leaving on date"+c.months+"/"+c.days+"/"+c.years+"\n"+"From "+c.departure+" to "+c.dest
+					+"\n"+"Leaving at"+c.times+"\n"+"Number of people:"+c.nums+"\n"+"Price per Person"+"$"+c.x+"\n"+"___________"
+					+"\n"+"Total with Taxes:"+"$"+c.totalcost+"\n"+"\n"+"\n");
+	    	c.buyn.setEnabled(false);
+	    	c.reviewn.setEnabled(false);
+	    	
+	    	}
+	public void performreset()
+	{ 	if(c.sound.isSelected() == true)
+		c.sounds1.play();
+	
+		c.departingb.setSelectedIndex(0);
+		c.destinationb.setSelectedIndex(0);
+		c.day.setText("Day");
+		c.month.setText("Month");
+		c.year.setText("Year");
+		c.time.setSelectedIndex(0);
+		c.passengern.setText("0");
+		c.first.setText("First Name");
+		c.last.setText("Last Name");
+		c.popUpFrame.setVisible(false);
+		c.si.setText("Special Instructions:");
+		}
+	public void performcancel()
+	{	if(c.sound.isSelected() == true)
+		c.sounds1.play();
+	
+		c.popUpFrame.setVisible(false);
+		c.departingb.setSelectedIndex(0);
+		c.destinationb.setSelectedIndex(0);
+		c.day.setText("");
+		c.month.setText("");
+		c.year.setText("");
+		c.time.setSelectedIndex(0);
+		c.passengern.setText("");
+		c.first.setText("");
+		c.last.setText("");
+			}
+    
+       public void performmusic()
+    {if(c.music.isSelected() == true)
+    		c.music1.loop();
+    		else c.music1.stop();
+ }
+    public void performsubmit()
+	{	if(c.sound.isSelected() == true)
+			c.sounds1.play();
+			
+		//code will run when press submit.
+		c.fcity = (String)(c.departingb.getSelectedItem());
+		c.tcity = (String)(c.destinationb.getSelectedItem());
+	
+	
+		if(c.fcity.equals("Dallas")& c.tcity.equals("New York"))
+			c.x=140.00;
+		else if(c.fcity.equals("Dallas")& c.tcity.equals("Chicago"))
+			c.x=120.00;
+		else if(c.fcity.equals("Dallas")& c.tcity.equals("San Francisco"))
+			c.x=150.00;
+		else if(c.fcity.equals("Dallas")& c.tcity.equals("Washinton DC"))
+			c.x=170.00;
+		else if(c.fcity.equals("Dallas")& c.tcity.equals("Seattle"))
+			c.x=170.00;
+		if(c.fcity.equals("New York")& c.tcity.equals("Dallas"))
+			c.x=140.00;
+		else if(c.fcity.equals("New York")& c.tcity.equals("Chicago"))
+			c.x=120.00;
+		else if(c.fcity.equals("New York")& c.tcity.equals("San Francisco"))
+			c.x=240.00;
+		else if(c.fcity.equals("New York")& c.tcity.equals("Washinton DC"))
+			c.x=70.00;
+		else if(c.fcity.equals("New York")& c.tcity.equals("Seattle"))
+			c.x=230.00;
+			
+		if(c.fcity.equals("Chicago")& c.tcity.equals("Dallas"))
+			c.x=120.00;
+		else if(c.fcity.equals("Chicago")& c.tcity.equals("New York"))
+			c.x=120.00;
+		else if(c.fcity.equals("Chicago")& c.tcity.equals("San Francisco"))
+			c.x=210.00;
+		else if(c.fcity.equals("Chicago")& c.tcity.equals("Washinton DC"))
+			c.x=120.00;
+		else if(c.fcity.equals("Chicago")& c.tcity.equals("Seattle"))
+			c.x=200.00;
+		
+		if(c.fcity.equals("San Francisco")& c.tcity.equals("Dallas"))
+			c.x=150.00;
+		else if(c.fcity.equals("San Francisco")&c.tcity.equals("New York"))
+			c.x=240.00;
+		else if(c.fcity.equals("San Francisco")& c.tcity.equals("Washinton DC"))
+			c.x=250.00;
+		else if(c.fcity.equals("San Francisco")& c.tcity.equals("Seattle"))
+			c.x=140.00;
+		else if(c.fcity.equals("San Francisco")& c.tcity.equals("Chicago"))
+			c.x=240.00;
+		
+		if(c.fcity.equals("Washinton DC")& c.tcity.equals("Dallas"))
+			c.x=170.00;
+		else if(c.fcity.equals("Washinton DC")& c.tcity.equals("New York"))
+			c.x=70.00;
+		else if(c.fcity.equals("Washinton DC")& c.tcity.equals("Chicago"))
+			c.x=120.00;
+		else if(c.fcity.equals("Washinton DC")& c.tcity.equals("San Franciso"))
+			c.x=250.00;
+		else if(c.fcity.equals("Washinton DC")& c.tcity.equals("Seattle"))
+			c.x=220.00;
+		
+		if(c.fcity.equals("Seattle")& c.tcity.equals("Dallas"))
+			c.x=170.00;
+		else if(c.fcity.equals("Seattle")& c.tcity.equals("New York"))
+			c.x=230.00;
+		else if(c.fcity.equals("Seattle")& c.tcity.equals("Washinton DC"))
+			c.x=220.00;
+		else if(c.fcity.equals("Seattle")& c.tcity.equals("San Francisco"))
+			c.x=140.00;
+		else if(c.fcity.equals("Seattle")& c.tcity.equals("Chicago"))
+			c.x=230.00;
+		
+		 c.times = (String)(c.time.getSelectedItem());
+		if(c.times.equals("Morning"))
+			c.times = ("6:00 AM");
+		else if(c.times.equals("Afternoon"))
+			c.times =("1:00 Pm");
+		else if(c.times.equals("Evening"))
+			c.times =("6:00 Pm");
+		else if(c.times.equals("Night"))
+			c.times =("10:00 Pm");
+		
+			
+		
+		
+		
+
+		c.extra = (String)(c.time.getSelectedItem());
+		if(c.extra.equals("Morning"))
+			c.x=c.x+5.00;
+		else if(c.extra.equals("Afternoon"))
+			c.x=c.x+30.00;
+		else if(c.extra.equals("Evening"))
+			c.x=c.x+25.00;
+		else if(c.extra.equals("Night"))
+			c.x=c.x+10.00;
+		
+		c.y = c.x*1.08;	
+		 c.departure = (String)(c.departingb.getSelectedItem());
+		 c.dest = (String)(c.destinationb.getSelectedItem());
+		
+		 
+		 try {  c.nums = Integer.parseInt(c.passengern.getText());}
+		 catch(NumberFormatException e)
+		{
+			performerror3();
+		}
+				
+				
+				
+				
+		
+		
+		
+		 c.fns = c.first.getText();
+		 c.lns = c.last.getText();
+		
+		
+		
+		performCalculation();
+		c.detail.setText(c.fns+"  "+c.lns+"\n"+"Leaving on date"+c.months+"/"+c.days+"/"+c.years+"\n"+"From "+c.departure+" to "+c.dest
+				+"\n"+"Leaving at"+c.times+"\n"+"Number of people:"+c.nums+"\n"+"Price per Person"+"$"+c.x+"\n"+"___________"
+				+"\n"+"Total with Taxes:"+"$"+c.totalcost+"\n"+"\n"+"\n");
+		if(c.round.isSelected() == true)
+		c.popUpFrame.setVisible(true);
+		if(c.fcity.equals(c.tcity))
+		performerror();
+		
+		 try {	 c.days = Integer.parseInt(c.day.getText());
+		 c.months = Integer.parseInt(c.month.getText());
+		 c.years = Integer.parseInt(c.year.getText());
+		 
+ }
+		
+ catch(NumberFormatException e)
+ {
+	performerror2();
+ }
+	
+		c.validate();
+	
+	}
+   
+  
+    
+    public void performCalculation() 
+    {
+    		c.cost =c.x;
+    		c.nums = Integer.parseInt(c.passengern.getText());
+    		
+    		c.totalcost = c.x*c.nums*1.08;		
+    	
+    }
+
+    
+    public void performroundsingle()
+    {  if(c.single.isSelected() == true)
+     {	 c.month2.setVisible(false); 
+     	 c.day2.setVisible(false); 
+     	 c.year2.setVisible(false);
+     	 c.time2.setVisible(false);
+     	 c.ReturnDate.setVisible(false);
+    		
+    	}
+    else if(c.round.isSelected() == true)
+    {   c.month2.setVisible(true); 
+	 	c.day2.setVisible(true); 
+	 	c.year2.setVisible(true);
+	 	c.time2.setVisible(true);
+	 	c.ReturnDate.setVisible(true);
+     }
+    }
+    
+    public void performerror() 
+    {
+    //c.detail.setText("ERROR"+"\nPlease select different destination than departing city");
+    c.si.setText("ERROR"+"\nPlease select different destination than departing city");
+    c.popUpFrame.setVisible(false);
+    	}
+    public void performerror2()
+    {
+    	c.si.setText("ERROR"+"\nPlease input valued numbers for dates");
+    	 c.popUpFrame.setVisible(false);
+    }
+    public void performerror3()
+    {
+    	c.si.setText("ERROR"+"\nPlease input valued numbers for passenger number");
+    	 c.popUpFrame.setVisible(false);
+    }
+    public void performreveiw()
+    { c.popUpFrame.setVisible(false);
+    	 }
+   
+
+    
+}
