@@ -1,0 +1,253 @@
+import java.awt.*;
+import javax.swing.*;
+public class Lab4 extends JApplet
+/***************************************************************/ 
+/*   Program Name:     Lab 4                                  */ 
+/*                                                             */ 
+/*   Student Name:     Kai Qin                                 */ 
+/*   Semester:         Fall 2017                               */ 
+/*   Class-Section:    CoSc10403-055                           */ 
+/*   Instructor:       Dr.Comer                                */ 
+/*                                                             */ 
+/*   Program Overview:                                         */ 
+/* 	 	This is a assignment that improves the look by using	  */                 
+/* 		JPannels with BorderLayout and GridLayout to manage    */ 
+/*		The appearence of the applet.                          */
+/*   Input:                                                    */ 
+/*    	JPanels,BorderLayout, GridLayout and everything from   */
+/*      Lab3    												  */
+/*   Output:                                                   */ 
+/*     None                                                    */ 
+/*                                                             */ 
+/*   Program Limitations:                                      */ 
+/*     It is not connected to a real website                   */ 
+/*                                                             */ 
+/*   Significant Program Variables: 							 */
+/*     Image: Aircraft.gif                                     */ 
+/*     JLabels:flights, company name, departing, destination...*/ 
+/*     JComboBox: depart cities, arrive cities                 */
+/*     JButton: Submit, Cancel, Reset                          */
+/*     JRadioButton: Round trip, one-way                       */
+/*     JTextfield: month, day, year, time, firstname, lastname */
+/*     JTextArea: Special instructions                         */
+/*     JCheckBox: Music, Sound                                 */
+/*     JPanel(FlowLayout):East West and North sides            */
+/*     Jpanel(GridLayout):Center  							  */
+/*     JPanel(BorderLayout):Whole page 						  */
+/*     popUpFrame                                              */
+/***************************************************************/  
+{   
+	Font ST = new Font("San Serief",Font.BOLD,45);
+	Font dd = new Font("San Serief",Font.BOLD,20);
+	Color PURPLE = new Color(101,6,125);
+	Color LIGHTYELLOW = new Color(255,248,7);
+	Color LIGHTGRAY = new Color(179,183,186);
+	Color LIGHTPURPLE = new Color(198,84,247);
+	JFrame popUpFrame = new JFrame("Pop UP Frame");
+	JPanel northp,westp,centerp,southp,eastp,center1,center2,center3,center4;
+	
+	public void doborders()
+	{	eastp = new JPanel(new FlowLayout());
+		westp= new JPanel(new FlowLayout());
+		JLabel l1 = new JLabel("     ");
+		JLabel l2 = new JLabel("     ");
+		eastp.setBackground(PURPLE);
+			eastp.add(l1);
+		westp.setBackground(PURPLE);
+			westp.add(l2);
+		add(eastp,BorderLayout.EAST);
+		add(westp,BorderLayout.WEST);
+	}
+	
+	
+	public void donorth()
+	{  northp = new JPanel(new FlowLayout());
+	  JLabel company = new JLabel("Schnell Tickets");
+	  company.setFont(ST);
+	  company.setForeground(Color.WHITE);
+	  northp.setBackground(PURPLE);
+	  northp.add(company);
+	  add(northp,BorderLayout.NORTH);
+	    }
+	
+	public void dosouth()
+	{	southp = new JPanel(new FlowLayout());
+		Image Aircraft = getImage(getCodeBase(),"Lab4Images/Aircraft.gif");
+		ImageIcon ic = new ImageIcon(Aircraft); 
+		JLabel aircraft = new JLabel(ic);
+		JTextArea si = new JTextArea("Special Instructions:",6,45);
+		si.setForeground(Color.BLUE);
+		add(southp,BorderLayout.SOUTH);
+			southp.add(aircraft);
+			southp.add(si);
+			southp.setBackground(PURPLE);
+		} 
+	
+	public void docenter()
+	{	JPanel p0 = new JPanel();
+		centerp = new JPanel(new GridLayout(4,1));
+		center1 = new JPanel(new GridLayout(3,2));
+		JLabel departing = new JLabel("Departing From",JLabel.CENTER);
+		departing.setFont(dd);
+		JLabel destination = new JLabel("Destination",JLabel.CENTER);
+		destination.setFont(dd);
+		JComboBox destinationb = new JComboBox();
+		JComboBox departingb = new JComboBox();
+		center1.add(departing);
+		center1.add(destination);
+		center1.add(departingb);
+			departingb.addItem("select city");
+			departingb.addItem("Dallas");
+			departingb.addItem("New York");
+			departingb.addItem("Chicago");
+			departingb.addItem("San Francisco");
+			departingb.addItem("Washinton DC");
+			departingb.addItem("Seattle");
+	   center1.add(destinationb);
+			destinationb.addItem("select city");
+			destinationb.addItem("Dallas");
+			destinationb.addItem("New York");
+			destinationb.addItem("Chicago");
+			destinationb.addItem("San Francisco");
+			destinationb.addItem("Washinton DC");
+			destinationb.addItem("Seattle");
+			
+		center2 = new JPanel(new GridLayout(3,2));
+		JRadioButton round = new JRadioButton("Round Trip");
+		JRadioButton single = new JRadioButton("One-Way");
+		JLabel DepartDate = new JLabel("Departing Date");
+		JLabel ReturnDate = new JLabel("Return Date");
+		
+		JPanel depart = new JPanel(new GridLayout(1,3));
+			JTextField month = new JTextField("Month",5);
+			JTextField day = new JTextField("day",3);
+			JTextField year = new JTextField("year",4);
+		JPanel returnn = new JPanel(new GridLayout(1,3));
+			JTextField month2 = new JTextField("month",5);
+			JTextField day2 = new JTextField("day",3);
+			JTextField year2 = new JTextField("year",4);
+		
+		center2.add(single);
+		center2.add(round);
+		center2.add(DepartDate);
+		center2.add(ReturnDate);
+		center2.add(depart);
+			depart.add(month);
+			depart.add(day);
+			depart.add(year);
+		center2.add(returnn);
+			returnn.add(month2);
+			returnn.add(day2);
+			returnn.add(year2);
+		
+		center3 = new JPanel(new GridLayout(3,2));
+			JComboBox time = new JComboBox();
+				time.addItem("Morning");
+				time.addItem("Afternoon");
+				time.addItem("Evening");
+				time.addItem("Night");
+			JComboBox time2 = new JComboBox();
+				time2.addItem("Morning");
+				time2.addItem("Afternoon");
+				time2.addItem("Evening");
+				time2.addItem("Night");
+			JLabel passenger = new JLabel("Number Of Passengers");
+			JTextField passengern = new JTextField (3);
+			JTextField first = new JTextField("First Name");
+			JTextField last = new JTextField("Last Name");
+			
+			center3.add(time);
+			center3.add(time2);
+			center3.add(passenger);
+			center3.add(passengern);
+			center3.add(first);
+			center3.add(last);
+			
+		center4 = new JPanel(new GridLayout(1,5));
+			center4.setBackground(LIGHTYELLOW);
+			
+			JCheckBox music = new JCheckBox("Music");
+				music.setBackground(LIGHTYELLOW);
+			JCheckBox sound = new JCheckBox("Sound");
+				sound.setBackground(LIGHTYELLOW);
+			JButton submit = new JButton("Submit");
+				submit.setForeground(Color.GREEN);
+			JButton cancel = new JButton("Cancel");
+				cancel.setForeground(Color.RED);
+			JButton reset = new JButton("Reset");
+				reset.setForeground(Color.BLUE);
+		JPanel p1 = new JPanel();
+		center4.add(p1);
+		p1.add(sound);
+		p1.setBackground(LIGHTYELLOW);
+		
+		JPanel p2 = new JPanel();
+		center4.add(p2);
+		p2.add(music);
+		p2.setBackground(LIGHTYELLOW);
+		
+		JPanel p3 = new JPanel();
+		center4.add(p3);
+		p3.add(submit);
+		p3.setBackground(LIGHTYELLOW);
+		
+		JPanel p4 = new JPanel();
+		center4.add(p4);
+		p4.add(cancel);
+		p4.setBackground(LIGHTYELLOW);
+		
+		JPanel p5 = new JPanel();
+		center4.add(p5);
+		p5.add(reset);
+		p5.setBackground(LIGHTYELLOW);
+		
+		
+	centerp.add(center1);
+	centerp.add(center2);
+	centerp.add(center3);
+	centerp.add(center4);
+	add(centerp,BorderLayout.CENTER);
+		}
+	
+	public void init()
+	{	setSize(1000,900);
+		setLayout(new BorderLayout());
+		doborders();
+		donorth();
+		dosouth();
+		docenter();
+		createFrame();
+		}
+	
+	public void createFrame()
+	 {  
+		popUpFrame.setBackground(Color.WHITE);
+	    popUpFrame.setSize(500,400);
+	    this.popUpFrame.setLayout(new FlowLayout());
+	    
+		JPanel fp = new JPanel(new BorderLayout()); 
+		fp.setBackground(LIGHTPURPLE);
+	    JLabel fd = new JLabel("FLIGHT DETAILS");
+	    fd.setFont(ST);
+	    JTextArea detail = new JTextArea("\n\nThe details of the \nseleceted flights and its costs \n will be posted in\n the TextArea\n\n");
+	    detail.setBackground(LIGHTGRAY);
+	    	fp.add(fd,BorderLayout.NORTH);
+	    	fp.add(detail,BorderLayout.CENTER);
+	    popUpFrame.setVisible(true);
+	    popUpFrame.add(fp);
+	    
+	    this.popUpFrame.validate();
+	    
+	 }
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
