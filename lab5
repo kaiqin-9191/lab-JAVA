@@ -1,0 +1,236 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class Lab5 extends Lab4 implements ActionListener
+/***************************************************************/ 
+/*   Program Name:     Lab 5                                   */ 
+/*                                                             */ 
+/*   Student Name:     Kai Qin                                 */ 
+/*   Semester:         Fall 2017                               */ 
+/*   Class-Section:    CoSc10403-055                           */ 
+/*   Instructor:       Dr.Comer                                */ 
+/*                                                             */ 
+/*   Program Overview:                                         */ 
+/* 	 	This is a assignment that gives different reactions    */
+/*      to different button selections.                        */
+/*   Input:                                                    */ 
+/*    	actionlisteners, if-else statement,some calculations  */
+/*      under size of double and everything from Lab4    		 */										 
+/*   Output:                                                   */ 
+/*     The popupframe                                          */ 
+/*                                                             */ 
+/*   Program Limitations:                                      */ 
+/*     it can only selescted a few cities as options           */ 
+/*                                                             */ 
+/*   Significant Program Variables: 							 */
+/*     Image: Aircraft.gif                                     */ 
+/*     JLabels:flights, company name, departing, destination...*/ 
+/*     JComboBox: depart cities, arrive cities                 */
+/*     JButton: Submit, Cancel, Reset                          */
+/*     JRadioButton: Round trip, one-way                       */
+/*     JTextfield: month, day, year, time, firstname, lastname */
+/*     JTextArea: Special instructions                         */
+/*     JCheckBox: Music, Sound                                 */
+/*     JPanel(FlowLayout):East West and North sides            */
+/*     Jpanel(GridLayout):Center  							  */
+/*     JPanel(BorderLayout):Whole page 						 */
+/*	   String:getting informations and output on frame	     */
+/*     popUpFrame                                              */
+/***************************************************************/  
+
+{   double x=0.0,y,z;
+	double totalcost,numPass,cost;
+    String fcity,tcity,times,extra,departure,dest,days,months,years,nums,fns,lns,numb;
+    
+
+	
+	public void init()
+	{	
+		super.init();
+		addListeners();
+		popUpFrame.setVisible(false);}
+		
+	
+		
+	    public void addListeners()
+	    		{
+	    		submit.addActionListener(this);
+	    		cancel.addActionListener(this);
+	    		reset.addActionListener(this);
+	    		departingb.addActionListener(this);
+	    		destinationb.addActionListener(this);
+	    		time.addActionListener(this);
+	    		}
+		
+		
+
+		public void performreset()
+		{ 	
+			departingb.setSelectedIndex(0);
+			destinationb.setSelectedIndex(0);
+			day.setText("Day");
+			month.setText("Month");
+			year.setText("Year");
+			time.setSelectedIndex(0);
+			passengern.setText("0");
+			first.setText("First Name");
+			last.setText("Last Name");
+			popUpFrame.setVisible(false);
+			}
+		public void performcancel()
+		{
+			popUpFrame.setVisible(false);
+			departingb.setSelectedIndex(0);
+			destinationb.setSelectedIndex(0);
+			day.setText("");
+			month.setText("");
+			year.setText("");
+			time.setSelectedIndex(0);
+			passengern.setText("");
+			first.setText("");
+			last.setText("");
+				}
+	    
+	    public void performerror() 
+	    {
+	    	detail.setText("ERROR+\nPlease select different destination than departing city");
+	    	}
+	    
+	    public void performsubmit()
+		{
+			//code will run when press submit.
+			fcity = (String)(departingb.getSelectedItem());
+			tcity = (String)(destinationb.getSelectedItem());
+		
+		
+			if(fcity.equals("Dallas")& tcity.equals("New York"))
+				x=140.00;
+			else if(fcity.equals("Dallas")& tcity.equals("Chicago"))
+				x=120.00;
+			else if(fcity.equals("Dallas")& tcity.equals("San Francisco"))
+				x=150.00;
+			else if(fcity.equals("Dallas")& tcity.equals("Washinton DC"))
+				x=170.00;
+			else if(fcity.equals("Dallas")& tcity.equals("Seattle"))
+				x=170.00;
+			
+			if(fcity.equals("New York")& tcity.equals("Dallas"))
+				x=140.00;
+			else if(fcity.equals("New York")& tcity.equals("Chicago"))
+				x=120.00;
+			else if(fcity.equals("New York")& tcity.equals("San Francisco"))
+				x=240.00;
+			else if(fcity.equals("New York")& tcity.equals("Washinton DC"))
+				x=70.00;
+			else if(fcity.equals("New York")& tcity.equals("Seattle"))
+				x=230.00;
+				
+			if(fcity.equals("Chicago")& tcity.equals("Dallas"))
+				x=120.00;
+			else if(fcity.equals("Chicago")& tcity.equals("New York"))
+				x=120.00;
+			else if(fcity.equals("Chicago")& tcity.equals("San Francisco"))
+				x=210.00;
+			else if(fcity.equals("Chicago")& tcity.equals("Washinton DC"))
+				x=120.00;
+			else if(fcity.equals("Chicago")& tcity.equals("Seattle"))
+				x=200.00;
+			
+			if(fcity.equals("San Francisco")& tcity.equals("Dallas"))
+				x=150.00;
+			else if(fcity.equals("San Francisco")& tcity.equals("New York"))
+				x=240.00;
+			else if(fcity.equals("San Francisco")& tcity.equals("Washinton DC"))
+				x=250.00;
+			else if(fcity.equals("San Francisco")& tcity.equals("Seattle"))
+				x=140.00;
+			else if(fcity.equals("San Francisco")& tcity.equals("Chicago"))
+				x=240.00;
+			
+			if(fcity.equals("Washinton DC")& tcity.equals("Dallas"))
+				x=170.00;
+			else if(fcity.equals("Washinton DC")& tcity.equals("New York"))
+				x=70.00;
+			else if(fcity.equals("Washinton DC")& tcity.equals("Chicago"))
+				x=120.00;
+			else if(fcity.equals("Washinton DC")& tcity.equals("San Franciso"))
+				x=250.00;
+			else if(fcity.equals("Washinton DC")& tcity.equals("Seattle"))
+				x=220.00;
+			
+			if(fcity.equals("Seattle")& tcity.equals("Dallas"))
+				x=170.00;
+			else if(fcity.equals("Seattle")& tcity.equals("New York"))
+				x=230.00;
+			else if(fcity.equals("Seattle")& tcity.equals("Washinton DC"))
+				x=220.00;
+			else if(fcity.equals("Seattle")& tcity.equals("San Francisco"))
+				x=140.00;
+			else if(fcity.equals("Seattle")& tcity.equals("Chicago"))
+				x=230.00;
+			
+			 times = (String)(time.getSelectedItem());
+			if(times.equals("Morning"))
+				times = ("6:00 AM");
+			else if(times.equals("Afternoon"))
+				times =("1:00 Pm");
+			else if(times.equals("Evening"))
+				times =("6:00 Pm");
+			else if(times.equals("Night"))
+				times =("10:00 Pm");
+			
+				
+			
+			
+			
+
+			extra = (String)(time.getSelectedItem());
+			if(extra.equals("Morning"))
+				x=x+5.00;
+			else if(extra.equals("Afternoon"))
+				x=x+30.00;
+			else if(extra.equals("Evening"))
+				x=x+25.00;
+			else if(extra.equals("Night"))
+				x=x+10.00;
+			
+			y = x*1.08;	
+			 departure = (String)(departingb.getSelectedItem());
+			 dest = (String)(destinationb.getSelectedItem());
+			 days = day.getText();
+			 months = month.getText();
+			 years = year.getText();
+			 nums = passengern.getText();
+			 fns = first.getText();
+			 lns = last.getText();
+			performCalculation();
+			detail.setText(fns+"  "+lns+"\n"+"Leaving on date"+months+"/"+days+"/"+years+"\n"+"From "+departure+" to "+dest
+					+"\n"+"Leaving at"+times+"\n"+"Number of people:"+nums+"\n"+"Price per Person"+"$"+x+"\n"+"___________"
+					+"\n"+"Total with Taxes:"+"$"+totalcost+"\n"+"\n"+"\n");
+			popUpFrame.setVisible(true);
+			if(fcity.equals(tcity))
+			performerror();
+			validate();
+		}
+	    
+	    public void performCalculation() 
+	    {
+	    		cost =x;
+	    		numb = passengern.getText();
+	    		numPass = Double.parseDouble(numb);
+	    		totalcost = x*numPass;		
+	    	
+	    }
+			
+			
+			public void actionPerformed(ActionEvent e)
+		{
+			if(e.getSource()== submit)
+				performsubmit();
+			else if (e.getSource() == reset)
+				performreset();
+			else if (e.getSource() == cancel)
+				performcancel();
+			
+		}
+	}
